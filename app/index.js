@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  Image,
-  View
 } from 'react-native';
-import logo from './resources/logo.png';
+import { Router, Scene } from 'react-native-router-flux';
+import Login from './components/Login/index';
+import Main from './components/MainPage/index';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
   render() {
     return (
-      <View>
-        <Image source={logo}></Image>
-        <Text>Hello world!</Text>
-      </View>
+      <Router>
+        <Scene key="root">
+          <Scene key="login"
+                 component={Login}
+                 title="Kok"
+                 hideNavBar={true}
+                 initial
+          />
+          <Scene key="main"
+                 component={Main}
+                 title="Main"
+          />
+        </Scene>
+      </Router>
     );
   }
 };
